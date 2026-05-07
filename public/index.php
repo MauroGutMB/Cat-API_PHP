@@ -5,7 +5,7 @@ $limit = 10;
 if (isset($_GET['limit'])) {
   $limit = (int) $_GET['limit'];
 }
-if ($limit < 1 || $limit > 30) {
+if ($limit < 1 || $limit > 100) {
   $limit = 10;
 }
 
@@ -39,9 +39,6 @@ if ($response === false || $httpCode >= 400) {
   }
 }
 
-function selected($current, $value) {
-  return $current === $value ? ' selected' : '';
-}
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -59,12 +56,15 @@ function selected($current, $value) {
         <p class="lede">Consumidor simples da API com foco em imagens e informacoes de racas.</p>
         <form class="controls" method="get" action="/">
           <label for="limit">Quantidade</label>
-          <select id="limit" name="limit">
-            <option value="5"<?php echo selected($limit, 5); ?>>5</option>
-            <option value="10"<?php echo selected($limit, 10); ?>>10</option>
-            <option value="15"<?php echo selected($limit, 15); ?>>15</option>
-            <option value="20"<?php echo selected($limit, 20); ?>>20</option>
-          </select>
+          <input
+            id="limit"
+            name="limit"
+            type="number"
+            min="1"
+            max="100"
+            value="<?php echo (int) $limit; ?>"
+            required
+          />
           <button type="submit">Carregar</button>
         </form>
       </div>
