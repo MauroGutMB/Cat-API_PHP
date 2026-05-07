@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $limit = 10;
 if (isset($_GET['limit'])) {
@@ -36,6 +37,34 @@ if ($response === false || $httpCode >= 400) {
     $items = $decoded;
   } else {
     $errorMessage = 'Resposta invalida da API.';
+  }
+}
+
+$translator = null;
+$translateCache = [];
+
+try {
+  $translator = new \Stichoza\GoogleTranslate\GoogleTranslate('pt-BR', 'en');
+} catch (Throwable $e) {
+  $translator = null;
+}
+
+function translateText($text, $translator, &$cache) {
+  if (!is_string($text) || $text === '' || $translator === null) {
+    return $text;
+  }
+
+  if (isset($cache[$text])) {
+    return $cache[$text];
+  }
+
+  try {
+    $translated = $translator->translate($text);
+    $cache[$text] = $translated;
+    return $translated;
+  } catch (Throwable $e) {
+    $cache[$text] = $text;
+    return $text;
   }
 }
 
@@ -83,6 +112,11 @@ if ($response === false || $httpCode >= 400) {
             $breedOrigin = $breed['origin'] ?? '';
             $breedDesc = $breed['description'] ?? 'Sem descricao disponivel.';
             $imgUrl = $item['url'] ?? '';
+
+            if ($breed !== null && $translator !== null) {
+              $breedName = translateText($breedName, $translator, $translateCache);
+              $breedDesc = translateText($breedDesc, $translator, $translateCache);
+            }
           ?>
           <article class="card" style="animation-delay: <?php echo (int) $index * 60; ?>ms">
             <?php if ($imgUrl !== ''): ?>
