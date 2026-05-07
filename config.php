@@ -9,3 +9,4 @@ if (isset($env['CAT_API_KEY'])) {
 
 
 $catApiBaseUrl = 'https://api.thecatapi.com/v1';
+
