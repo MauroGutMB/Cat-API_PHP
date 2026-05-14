@@ -1,7 +1,7 @@
 Cat API
 
 Website em PHP que consome TheCatAPI e mostra imagens com descricoes de racas.
-Renderizacao 100% no servidor (sem JavaScript).
+Renderizacao 100% no servidor
 
 Como rodar localmente:
 
