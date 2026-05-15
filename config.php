@@ -8,7 +8,7 @@ if (isset($env['CAT_API_KEY'])) {
 }
 
 // Caso não haja .env, usar chave hardcoded. (jamais use isso em produção)
-// $catApiKey = "live_WTJvA8KE6SYgLR0USUe9kPdHM3KcstAcaXGchkMz7u9c9BSKh6pDhCbvwGHO0Ok0";
+$catApiKey = "live_WTJvA8KE6SYgLR0USUe9kPdHM3KcstAcaXGchkMz7u9c9BSKh6pDhCbvwGHO0Ok0";
 
 
 $catApiBaseUrl = 'https://api.thecatapi.com/v1';
