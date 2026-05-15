@@ -5,14 +5,16 @@ Renderizacao 100% no servidor
 
 Como rodar localmente:
 
-1. Inicie o servidor embutido do PHP apontando para a pasta public
+1. Instale o composer através do seu gerenciador de pacotes
+
+2. Inicie o servidor embutido do PHP apontando para a pasta public
 
 ```bash
 composer install
 php -S localhost:8000
 ```
 
-2. Abra http://localhost:8000
+3. Abra http://localhost:8000
 
 A chave padrao ja esta em config.php, mas voce pode sobrescrever via variavel de ambiente.
 
