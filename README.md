@@ -4,7 +4,7 @@ Website em PHP que consome TheCatAPI e mostra imagens com descricoes de racas.
 
 Como rodar localmente:
 
-1. Instale o composer através do seu gerenciador de pacotes (Ubuntu)
+1. Instale o composer através do seu gerenciador de pacotes (ex. abaixo para Ubuntu)
 ```bash
 curl -sS https://getcomposer.org/installer -o composer-setup.php   
 ```
