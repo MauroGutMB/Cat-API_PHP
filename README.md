@@ -9,7 +9,7 @@ Como rodar localmente:
 curl -sS https://getcomposer.org/installer -o composer-setup.php   
 ```
 
-3. Inicie o servidor embutido do PHP apontando para a pasta public
+2. Inicie o servidor embutido do PHP apontando para a pasta public
 
 ```bash
 composer install
